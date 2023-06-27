@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.DirectoryServices;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
+using System.Xml;
 
 namespace ADUserManager
 {
@@ -52,14 +50,39 @@ namespace ADUserManager
             }
             return result += ")";
         }
+        public void LoadConfiguration(string filePath)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(filePath);
+
+            XmlNode prefixNode = doc.SelectSingleNode("/Configuration/Prefix");
+            if (prefixNode != null)
+            {
+                string prefix = prefixNode.InnerText;
+                SetPrefix(prefix);
+            }
+
+            XmlNodeList propertiesNodes = doc.SelectNodes("/Configuration/PropertiesToLoad/Property");
+            if (propertiesNodes != null)
+            {
+                List<string> propertiesToLoad = new List<string>();
+                foreach (XmlNode node in propertiesNodes)
+                {
+                    string property = node.InnerText;
+                    propertiesToLoad.Add(property);
+                }
+                PropertiesToLoad = propertiesToLoad.ToArray();
+            }
+        }
         public void Search_users(string query) 
-        {   
-            /***/
+        {
+            /***/  
             var de = new DirectoryEntry(_directoryEntryPath);
             var ds = new DirectorySearcher(de);
             ds.Filter = FormSearchFilter(query);
             ds.PropertiesToLoad.AddRange(_propertiesToLoad);
             SearchResultCollection results = ds.FindAll();
+            
             _users.Clear();
             foreach (SearchResult result in results) 
             {

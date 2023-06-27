@@ -5,10 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ADUserManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBox x:Name="QueryBox" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="800" TextChanged="TextBox_TextChanged" Height="49" FontSize="35" FontWeight="Bold"/>
-        <ListBox x:Name="ResponseListBox" Margin="0,49,0,0"/>
+        Title="AD Users Manager" Height="450" Width="800" WindowStyle="ToolWindow" FontFamily="Bahnschrift SemiBold">
+    <Window.Resources>
+        <Style TargetType="Window">
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome CaptionHeight="30" GlassFrameThickness="0" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Black" />
+            <Setter Property="Foreground" Value="Black" />
+        </Style>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="Left"
+                                              VerticalAlignment="Center"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
+    <Grid>
+        <TextBox x:Name="QueryBox" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Top" Width="800" TextChanged="TextBox_TextChanged" Height="30" FontSize="20" FontWeight="Bold" Background="#FFE0ECFF" FontFamily="Bahnschrift SemiBold"/>
+        <ListBox x:Name="ResponseListBox" Margin="0,30,0,0" Background="#FFE1E7FF" FontSize="14"/>
     </Grid>
 </Window>

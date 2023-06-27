@@ -14,12 +14,11 @@ namespace ADUserManager
         {
             InitializeComponent();
 
-            manager.SetPrefix("OU=SibirCentrUsers,");
+            QueryBox.Focus();
+
+            ConfigFileCreator.CreateConfigFileIfNotExists();
+            manager.LoadConfiguration("config.xml");
             manager.SetDirectoryEntryPath();
-            manager.PropertiesToLoad = new string[]
-                {   "cn", "sAMAccountName",
-                    "distinguishedName", "telephoneNumber",
-                    "mobile", "title", "department", "info" };
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -33,6 +32,7 @@ namespace ADUserManager
                     ResponseListBox.Items.Add(user.ToString());
                     ResponseListBox.Items.Add(new RadminButton("Radmin Control", user, true));
                     ResponseListBox.Items.Add(new RadminButton("Radmin No Control", user, false));
+                    ResponseListBox.Items.Add("_________________");
                 }
             }
         }

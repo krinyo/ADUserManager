@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+	<Prefix>OU=SibirCentrUsers,</Prefix>
+	<PropertiesToLoad>
+		<Property>cn</Property>
+		<Property>sAMAccountName</Property>
+		<Property>distinguishedName</Property>
+		<Property>telephoneNumber</Property>
+		<Property>mobile</Property>
+		<Property>title</Property>
+		<Property>department</Property>
+		<Property>info</Property>
+	</PropertiesToLoad>
+</Configuration>
+

@@ -35,7 +35,8 @@ namespace ADUserManager
             string result = string.Empty;
             foreach (var field in _userFields) 
             {
-                result += field.ToString() + "\n";
+                //result += field.ToString() + "\n";
+                result += string.Format("{0}\n", field.Value);
             }
             return result;
         }
