@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ADUserManager
 {
-    internal class ADUser
+    public class ADUser
     {
         private Dictionary<string, string> _userFields;
 
@@ -28,6 +28,16 @@ namespace ADUserManager
             {
                 return null;
             }
+        }
+
+        public override string ToString()
+        {
+            string result = string.Empty;
+            foreach (var field in _userFields) 
+            {
+                result += field.ToString() + "\n";
+            }
+            return result;
         }
     }
 }

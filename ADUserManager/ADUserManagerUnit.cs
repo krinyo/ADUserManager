@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ADUserManager
 {
-    internal class ADUserManager
+    internal class ADUserManagerUnit
     {
         private string[] _propertiesToLoad;
         private string _prefix;
@@ -16,7 +16,7 @@ namespace ADUserManager
         
         private List<ADUser> _users;
 
-        public ADUserManager() 
+        public ADUserManagerUnit() 
         { 
             _users = new List<ADUser>();
         }
@@ -27,6 +27,10 @@ namespace ADUserManager
             {
                 _propertiesToLoad = value;
             }
+        }
+        public List<ADUser> Users() 
+        {
+            return _users;
         }
         public void SetPrefix(string prefix) 
         {
