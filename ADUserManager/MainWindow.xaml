@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ADUserManager"
         mc:Ignorable="d"
-        Title="AD Users Manager" Height="450" Width="800" WindowStyle="ToolWindow" FontFamily="Bahnschrift SemiBold">
+        Icon="Resources/iconAD.ico"
+        
+        Title="AD Users Manager" Height="450" Width="800" WindowStyle="ThreeDBorderWindow" FontFamily="Bahnschrift SemiBold">
     <Window.Resources>
         <Style TargetType="Window">
             <Setter Property="WindowChrome.WindowChrome">
