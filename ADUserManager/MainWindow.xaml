@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Icon="Resources/iconAD.ico"
         
-        Title="AD Users Manager" Height="450" Width="800" WindowStyle="ThreeDBorderWindow" FontFamily="Bahnschrift SemiBold">
+        Title="AD Users Manager" Height="448" Width="714" WindowStyle="ThreeDBorderWindow" FontFamily="Bahnschrift SemiBold">
     <Window.Resources>
         <Style TargetType="Window">
             <Setter Property="WindowChrome.WindowChrome">
@@ -38,7 +38,7 @@
     </Window.Resources>
 
     <Grid>
-        <TextBox x:Name="QueryBox" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Top" Width="800" TextChanged="TextBox_TextChanged" Height="30" FontSize="20" FontWeight="Bold" Background="#FFE0ECFF" FontFamily="Bahnschrift SemiBold"/>
-        <ListBox x:Name="ResponseListBox" Margin="0,30,0,0" Background="#FFE1E7FF" FontSize="14"/>
+        <TextBox x:Name="QueryBox" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" Height="30" FontSize="20" FontWeight="Bold" Background="#FFE0ECFF" FontFamily="Bahnschrift SemiBold"/>
+        <ListBox x:Name="ResponseListBox" Margin="0,30,10,0" Background="#FFE1E7FF" FontSize="14"/>
     </Grid>
 </Window>

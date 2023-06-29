@@ -19,6 +19,8 @@ namespace ADUserManager
             ConfigFileCreator.CreateConfigFileIfNotExists();
             manager.LoadConfiguration("config.xml");
             manager.SetDirectoryEntryPath();
+
+            this.Title += string.Format(" [{0}]", manager.GetDirectoryEntryPath());
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -30,8 +32,13 @@ namespace ADUserManager
                 foreach (ADUser user in manager.Users()) 
                 {
                     ResponseListBox.Items.Add(user.ToString());
-                    ResponseListBox.Items.Add(new RadminButton("Radmin Control", user, true));
-                    ResponseListBox.Items.Add(new RadminButton("Radmin No Control", user, false));
+
+                    if (user.GetField("info") != null)
+                    {
+                        ResponseListBox.Items.Add(new RadminButton("Radmin Control", user, true));
+                        ResponseListBox.Items.Add(new RadminButton("Radmin No Control", user, false));
+                    }
+
                     ResponseListBox.Items.Add("_________________");
                 }
             }

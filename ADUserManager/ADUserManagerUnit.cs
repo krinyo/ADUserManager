@@ -35,10 +35,18 @@ namespace ADUserManager
             _prefix = prefix;
             SetDirectoryEntryPath();
         }
+        public string GetPrefix() 
+        {
+            return _prefix;
+        }
         public void SetDirectoryEntryPath() 
         {
             var de = new DirectoryEntry("LDAP://RootDSE");
             _directoryEntryPath = "LDAP://" + _prefix + de.Properties["defaultNamingContext"][0].ToString();
+        }
+        public string GetDirectoryEntryPath() 
+        {
+            return _directoryEntryPath;
         }
         private string FormSearchFilter(string crit)
         {
@@ -81,19 +89,28 @@ namespace ADUserManager
             var ds = new DirectorySearcher(de);
             ds.Filter = FormSearchFilter(query);
             ds.PropertiesToLoad.AddRange(_propertiesToLoad);
-            SearchResultCollection results = ds.FindAll();
-            
-            _users.Clear();
-            foreach (SearchResult result in results) 
+            SearchResultCollection results;
+            try
             {
-                ADUser user = new ADUser();
-                foreach (var prop in _propertiesToLoad)
+                results = ds.FindAll();
+                _users.Clear();
+                foreach (SearchResult result in results)
                 {
-                    if (result.Properties.Contains(prop))
-                        user.SetField(prop, result.Properties[prop][0].ToString());
+                    ADUser user = new ADUser();
+                    foreach (var prop in _propertiesToLoad)
+                    {
+                        if (result.Properties.Contains(prop))
+                            user.SetField(prop, result.Properties[prop][0].ToString());
+                    }
+                    _users.Add(user);
                 }
-                _users.Add(user);
             }
+            catch 
+            {
+                MessageBox.Show("Ошибка. Вероятнее всего нужно исправить префикс в config.xml");
+            }
+            
+
             /***/
 
         }
