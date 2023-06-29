@@ -33,6 +33,10 @@ namespace ADUserManager
                 {
                     ResponseListBox.Items.Add(user.ToString());
 
+                    var telephoneSearch = new TelephoneDirectorySearcher("Список телефонов.csv");
+                    telephoneSearch.Search(user.GetField("cn"));
+                    ResponseListBox.Items.Add(telephoneSearch.ToString());
+
                     if (user.GetField("info") != null)
                     {
                         ResponseListBox.Items.Add(new RadminButton("Radmin Control", user, true));
