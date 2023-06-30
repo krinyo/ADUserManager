@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-
+﻿using System.IO;
 
 namespace ADUserManager
 {
@@ -67,7 +65,7 @@ namespace ADUserManager
 
         public override string ToString()
         {
-            return string.Format("Внутренний номер {0} \n Мобильный номер {1}", this._internalNumber, this._mobileNumber);
+            return string.Format("Внутренний номер {0} \nМобильный номер {1}", this._internalNumber, this._mobileNumber);
         }
     }
 }
