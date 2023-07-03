@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Management.Automation;
+using System.Windows;
 using System.Windows.Controls;
+
 
 namespace ADUserManager
 {
@@ -9,20 +11,19 @@ namespace ADUserManager
     public partial class MainWindow : Window
     {
         ADUserManagerUnit manager = new ADUserManagerUnit();
-
+        private PowerShell powerShell;//toDO
         public MainWindow()
         {
             InitializeComponent();
 
             QueryBox.Focus();
 
-            ConfigFileCreator.CreateConfigFileIfNotExists();
+            ConfigFileCreator.CreateConfigFileIfNotExists("config.xml");
             manager.LoadConfiguration("config.xml");
             manager.SetDirectoryEntryPath();
 
             this.Title += string.Format(" [{0}]", manager.GetDirectoryEntryPath());
         }
-
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             ResponseListBox.Items.Clear();
@@ -47,5 +48,6 @@ namespace ADUserManager
                 }
             }
         }
+
     }
 }

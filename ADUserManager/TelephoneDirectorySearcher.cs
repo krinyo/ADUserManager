@@ -37,6 +37,8 @@ namespace ADUserManager
         }*/
         public void Search(string query)
         {
+            if (query == null)
+                return;
             using (var reader = new StreamReader(_filePath))
             {
                 string line;

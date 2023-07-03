@@ -14,6 +14,9 @@
 
   <ItemGroup>
     <PackageReference Include="EPPlus" Version="6.2.6" />
+    <PackageReference Include="Microsoft.PowerShell.Commands.Diagnostics" Version="7.2.12" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.12" />
+    <PackageReference Include="System.Management.Automation" Version="7.2.12" />
   </ItemGroup>
 
   <ItemGroup>

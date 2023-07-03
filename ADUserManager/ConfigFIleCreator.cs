@@ -4,9 +4,9 @@ using System.Xml;
 
 public static class ConfigFileCreator
 {
-    public static void CreateConfigFileIfNotExists()
+    public static void CreateConfigFileIfNotExists(string configFile)
     {
-        string configFile = "config.xml";
+        //string configFile = "config.xml";
         string configFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, configFile);
 
         if (!File.Exists(configFilePath))
