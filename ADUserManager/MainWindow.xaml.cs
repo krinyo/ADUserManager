@@ -31,9 +31,16 @@ namespace ADUserManager
                 {
                     ResponseListBox.Items.Add(user.ToString());
 
-                    var telephoneSearch = new TelephoneDirectorySearcher("Список телефонов.csv");
-                    telephoneSearch.Search(user.GetField("cn"));
-                    ResponseListBox.Items.Add(telephoneSearch.ToString());
+                    try
+                    {
+                        var telephoneSearch = new TelephoneDirectorySearcher("Список телефонов.csv");
+                        telephoneSearch.Search(user.GetField("cn"));
+                        ResponseListBox.Items.Add(telephoneSearch.ToString());
+                    }
+                    catch {
+                        MessageBox.Show("No telephone file!");
+                    }
+
 
                     if (user.GetField("info") != null)
                     {
