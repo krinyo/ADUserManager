@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Resources\iconAD.ico</ApplicationIcon>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,10 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EPPlus" Version="6.2.6" />
-    <PackageReference Include="Microsoft.PowerShell.Commands.Diagnostics" Version="7.2.12" />
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.12" />
-    <PackageReference Include="System.Management.Automation" Version="7.2.12" />
+    <COMReference Include="{215d64d2-031c-33c7-96e3-61794cd1ee61}">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>4</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>215d64d2-031c-33c7-96e3-61794cd1ee61</Guid>
+    </COMReference>
   </ItemGroup>
 
   <ItemGroup>

@@ -1,7 +1,5 @@
-﻿using System.Management.Automation;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-
 
 namespace ADUserManager
 {
@@ -10,8 +8,7 @@ namespace ADUserManager
     /// </summary>
     public partial class MainWindow : Window
     {
-        ADUserManagerUnit manager = new ADUserManagerUnit();
-        private PowerShell powerShell;//toDO
+        private ADUserManagerUnit manager = new ADUserManagerUnit();
         public MainWindow()
         {
             InitializeComponent();
@@ -42,6 +39,9 @@ namespace ADUserManager
                     {
                         ResponseListBox.Items.Add(new RadminButton("Radmin Control", user, true));
                         ResponseListBox.Items.Add(new RadminButton("Radmin No Control", user, false));
+
+                        ResponseListBox.Items.Add(new OpenInExplorerButton("Open c$", user, "c$"));
+                        ResponseListBox.Items.Add(new GetPrintersButton("Printers", user));
                     }
 
                     ResponseListBox.Items.Add("_________________");
