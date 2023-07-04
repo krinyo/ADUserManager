@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuration>
-	<Prefix>OU=SibirCentrUsers,</Prefix>
+	<Prefix>OU=SOMEOU,</Prefix>
 	<PropertiesToLoad>
 		<Property>cn</Property>
 		<Property>sAMAccountName</Property>
