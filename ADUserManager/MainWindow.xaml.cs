@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
+using System.Xml.Linq;
 
 namespace ADUserManager
 {
@@ -56,5 +58,24 @@ namespace ADUserManager
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(QueryBox.Text != string.Empty)
+            {
+                string pcName = QueryBox.Text;
+                var proc = new ProcessStartInfo(@"C:\Program Files (x86)\Radmin Viewer 3\Radmin.exe", "/connect:" + pcName);
+                Process.Start(proc);
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (QueryBox.Text != string.Empty)
+            {
+                string pcName = QueryBox.Text;
+                var proc = new ProcessStartInfo(@"C:\Program Files (x86)\Radmin Viewer 3\Radmin.exe", "/connect:" + pcName + " /noinput");
+                Process.Start(proc);
+            }
+        }
     }
 }
