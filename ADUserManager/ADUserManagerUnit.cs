@@ -82,7 +82,7 @@ namespace ADUserManager
                 PropertiesToLoad = propertiesToLoad.ToArray();
             }
         }
-        public void Search_users(string query) 
+        public void SearchUsers(string query) 
         {
             /***/  
             var de = new DirectoryEntry(_directoryEntryPath);

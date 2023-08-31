@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Icon="Resources/iconAD.ico"
         
-        Title="AD Users Manager" Height="448" Width="714" WindowStyle="ThreeDBorderWindow" FontFamily="Bahnschrift SemiBold">
+        Title="AD Users Manager" Height="500" Width="900" WindowStyle="ThreeDBorderWindow" FontFamily="Bahnschrift SemiBold">
     <Window.Resources>
         <Style TargetType="Window">
             <Setter Property="WindowChrome.WindowChrome">
@@ -38,9 +38,9 @@
     </Window.Resources>
 
     <Grid>
-        <TextBox x:Name="QueryBox" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" Height="30" FontSize="20" FontWeight="Bold" Background="#FFE0ECFF" FontFamily="Bahnschrift SemiBold" HorizontalAlignment="Left" Width="488"/>
-        <Button Content="RC" VerticalAlignment="Top" Height="30" Click="Button_Click" HorizontalAlignment="Right" Width="112"/>
-        <Button Content="RV" Margin="0,0,112,0" VerticalAlignment="Top" Height="30" Click="Button_Click_1" HorizontalAlignment="Right" Width="114"/>
-        <ListBox x:Name="ResponseListBox" Margin="0,30,0,0" Background="#FFE1E7FF" FontSize="14"/>
+        <TextBox x:Name="QueryBox" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" Height="30" FontSize="20" FontWeight="Bold" Background="#FFE0ECFF" FontFamily="Bahnschrift SemiBold" Margin="0,0,217,0"/>
+        <ListBox x:Name="ResponseListBox" Margin="0,30,217,0" Background="#FFE1E7FF" FontSize="14"/>
+        <TextBox x:Name="ComputersQuery" Margin="688,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" TextChanged="TextBox_TextChanged_1"/>
+        <ListBox x:Name="ComputersListBox" Margin="688,30,0,0" SelectionChanged="ComputersBox_SelectionChanged" />
     </Grid>
 </Window>

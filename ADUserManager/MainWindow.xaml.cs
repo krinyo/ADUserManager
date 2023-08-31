@@ -11,6 +11,7 @@ namespace ADUserManager
     public partial class MainWindow : Window
     {
         private ADUserManagerUnit manager = new ADUserManagerUnit();
+        private ADComputerManagerUnit compManager = new ADComputerManagerUnit();
         public MainWindow()
         {
             InitializeComponent();
@@ -22,13 +23,21 @@ namespace ADUserManager
             manager.SetDirectoryEntryPath();
 
             this.Title += string.Format(" [{0}]", manager.GetDirectoryEntryPath());
+
+            foreach (var pc in compManager.GetComputers())
+            {
+                ComputersListBox.Items.Add(pc.Key);
+                ComputersListBox.Items.Add(new RadminButtonStatic("Control", pc.Key, true));
+                ComputersListBox.Items.Add(new RadminButtonStatic("No control", pc.Key, false));
+                ComputersListBox.Items.Add("______________________");
+            }
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             ResponseListBox.Items.Clear();
             if (QueryBox.Text.Length > 2)
             {
-                manager.Search_users(QueryBox.Text);
+                manager.SearchUsers(QueryBox.Text);
                 foreach (ADUser user in manager.Users()) 
                 {
                     ResponseListBox.Items.Add(user.ToString());
@@ -75,6 +84,47 @@ namespace ADUserManager
                 string pcName = QueryBox.Text;
                 var proc = new ProcessStartInfo(@"C:\Program Files (x86)\Radmin Viewer 3\Radmin.exe", "/connect:" + pcName + " /noinput");
                 Process.Start(proc);
+            }
+        }
+
+        private void ComputersBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            var computers = compManager.GetComputers();
+            ComputersListBox.Items.Clear();
+            if (ComputersQuery.Text.Length == 0) 
+            {
+                foreach (var pc in computers)
+                {
+                    ComputersListBox.Items.Add(pc.Key);
+                    ComputersListBox.Items.Add(new RadminButtonStatic("Control", pc.Key, true));
+                    ComputersListBox.Items.Add(new RadminButtonStatic("No control", pc.Key, false));
+                    ComputersListBox.Items.Add("______________________");
+                }
+            }
+            if (ComputersQuery.Text.Length >= 2) 
+            {
+                /*if (computers.ContainsKey(ComputersQuery.Text.ToUpper()))
+                {
+                    ComputersListBox.Items.Add(ComputersQuery.Text.ToUpper());
+                    ComputersListBox.Items.Add(new RadminButtonStatic("Control", ComputersQuery.Text.ToUpper(), true));
+                    ComputersListBox.Items.Add(new RadminButtonStatic("No control", ComputersQuery.Text.ToUpper(), false));
+                    ComputersListBox.Items.Add("______________________");
+                }*/
+                foreach (var key in computers.Keys) 
+                {
+                    if (key.ToLower().Contains(ComputersQuery.Text.ToLower())) 
+                    {
+                        ComputersListBox.Items.Add(key.ToString());
+                        ComputersListBox.Items.Add(new RadminButtonStatic("Control", key.ToString(), true));
+                        ComputersListBox.Items.Add(new RadminButtonStatic("No control", key.ToString(), false));
+                        ComputersListBox.Items.Add("______________________");
+                    }
+                }
             }
         }
     }
